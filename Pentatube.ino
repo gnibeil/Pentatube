@@ -34,14 +34,14 @@ void loop() {
   //theaterChase(tube.Color(0, 255, 255), 25);  //cyan
   //theaterChase(tube.Color(255, 0, 255), 25);  //pink
   //theaterChase(tube.Color(255, 255, 0), 25);  //yellow
-  rainbowCycle(25);
-  rainbow(250);
+  //rainbowCycle(25);
+  //rainbow(250);
   //theaterChaseRainbow(25);
-  knightRider(tube.Color(255, 0, 0), 15);
-  knightRider(tube.Color(0, 255, 0), 15);
-  knightRider(tube.Color(255, 255, 0), 15);
-  knightRider(tube.Color(0, 255, 255), 15);
-  knightRider(tube.Color(255, 0, 255), 15);
+  //knightRider(tube.Color(255, 0, 0), 15);
+  //knightRider(tube.Color(0, 255, 0), 15);
+  //knightRider(tube.Color(255, 255, 0), 15);
+  //knightRider(tube.Color(0, 255, 255), 15);
+  knightRider2(tube.Color(255, 0, 255), 15);
 }
 
 void rainbow(uint8_t wait) {
@@ -88,6 +88,30 @@ void knightRider(uint32_t c, uint8_t wait) {
     tube.show(wait * 2);
   }
 
+
+}
+
+void knightRider2(uint32_t c, uint8_t wait) {
+
+  int cur_pos = 0;
+
+  for (uint16_t j = 0; j < tube.numPixels(); j++) {
+    tube.clear();
+    tube.setPixelColor(j, c);
+    tube.show(wait);
+    tube.setPixelColor(j + 1, c);
+    tube.show(wait);
+    tube.show(wait * 2);
+  }
+
+  for (uint16_t j = tube.numPixels(); j > 0; j--) {
+    tube.clear();
+    tube.setPixelColor(j, c);
+    tube.show(wait);
+    tube.setPixelColor(j - 1, c);
+    tube.show(wait);
+    tube.show(wait * 2);
+  }
 
 }
 
